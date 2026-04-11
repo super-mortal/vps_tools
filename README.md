@@ -133,6 +133,23 @@ chmod +x ssl_cert.sh
 2. 服务名称（如 `Nav`）
 3. 端口号（如 `8080`）
 
+### 注意
+
+若防火墙未开放443端口，需要手动开放
+
+```markdown
+# 先确认 443 端口真的是 Nginx 在监听
+ss -tulnp | grep 443
+# 查看 ufw 状态（Debian/Ubuntu）
+ufw status
+# 放行443端口（TCP协议，HTTPS标准端口）
+ufw allow 443/tcp
+# 重载防火墙规则，使配置生效
+ufw reload
+# 再次验证规则是否添加成功
+ufw status
+```
+
 ## Nginx 常用命令
 
 ```bash
