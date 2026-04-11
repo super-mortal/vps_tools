@@ -162,7 +162,7 @@ install_docker() {
     echo "  • 包含 Docker Engine 和 Docker Compose 插件"
     echo "  • 自动修复 apt 源问题，支持多种 Linux 发行版"
     echo ""
-    echo -e "${YELLOW}⚠️  某些服务需要 Docker 环境（如 New-API 等）${NC}"
+    echo -e "${YELLOW}⚠️  某些服务需要 Docker 环境（如 NLink-Navigator 等）${NC}"
     echo ""
 
     if confirm "是否安装 Docker？" "y"; then
