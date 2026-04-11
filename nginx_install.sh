@@ -248,7 +248,7 @@ echo -e "${GREEN}==============================================${NC}"
 echo -e "${CYAN}>>> [5/4] 安装 acme.sh...${NC}"
 if [ ! -f "$HOME/.acme.sh/acme.sh" ]; then
     echo -e "正在安装 acme.sh..."
-    curl -s https://get.acme.sh | sh -s email=admin@example.com
+    curl -s https://get.acme.sh | sh -s email=admin@vps.tools
     source ~/.bashrc
     echo -e "${GREEN}✓ acme.sh 安装完成${NC}"
 else
