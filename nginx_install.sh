@@ -255,6 +255,9 @@ else
     echo -e "${GREEN}✓ acme.sh 已安装，跳过${NC}"
 fi
 
+# 添加 nginx 到环境变量（符号链接方式，兼容登录/非登录 shell）
+ln -sf /usr/local/nginx/sbin/nginx /usr/local/bin/nginx
+
 echo -e ""
 echo -e "${GREEN}==============================================${NC}"
 echo -e "${GREEN}   Nginx + acme.sh 安装完成   ${NC}"
