@@ -36,24 +36,9 @@ chmod +x deploy_vps_tools.sh
 
 部署引导脚本会按顺序提示你安装：
 
-1. **Nginx 1.28.1**（必选）- Web 服务器，支持 HTTP/3
+1. **Nginx 1.28.1**（推荐）- Web 服务器，支持 HTTP/3
 2. **Docker**（可选）- 容器运行环境
-
-### 部署流程图
-
-```
-┌─────────────────────────────────────────┐
-│         VPS Tools 部署流程              │
-├─────────────────────────────────────────┤
-│                                         │
-│  1. Nginx 安装（必选）                  │
-│     ↓                                   │
-│  2. Docker 安装（可选）                 │
-│     ↓                                   │
-│  3. 申请 SSL 证书并配置反向代理         │
-│                                         │
-└─────────────────────────────────────────┘
-```
+3. **Node.js 20.x**（可选）- Node.js 运行时
 
 ## 单独安装 Docker
 
@@ -91,6 +76,28 @@ docker ps                           # 查看运行中的容器
 docker compose up -d                # 启动 docker-compose 服务
 docker compose down                 # 停止 docker-compose 服务
 docker compose logs -f              # 查看 docker-compose 日志
+```
+
+## 单独安装 Node.js
+
+如果只想单独安装 Node.js，不使用引导脚本：
+
+```bash
+cd vps_tools
+chmod +x install_nodejs.sh
+./install_nodejs.sh
+```
+
+**安装过程会自动完成**：
+- 检测系统发行版
+- 使用 NodeSource 官方脚本安装 Node.js 20.x
+- 安装 npm 包管理器
+
+**验证安装**：
+
+```bash
+node --version                    # 查看 Node.js 版本
+npm --version                   # 查看 npm 版本
 ```
 
 ## 申请 SSL 证书
