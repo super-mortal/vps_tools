@@ -140,9 +140,9 @@ chmod +x ssl_cert.sh
 2. 服务名称（如 `Nav`）
 3. 端口号（如 `8080`）
 
-### 注意
+### 注意事项
 
-若防火墙未开放443端口，需要手动开放
+1. 若防火墙未开放443端口，需要手动开放
 
 ```markdown
 # 先确认 443 端口真的是 Nginx 在监听
@@ -156,6 +156,24 @@ ufw reload
 # 再次验证规则是否添加成功
 ufw status
 ```
+
+2. 若报`docker compose` 命令找不到 / 无权限执行相关错误，手动进行修复
+
+```markdown
+# 给 docker-compose 插件添加可执行权限
+sudo chmod +x /usr/libexec/docker/cli-plugins/docker-compose
+
+# 修复文件所属用户/组（确保归 root:docker 所有）
+sudo chown root:docker /usr/libexec/docker/cli-plugins/docker-compose
+
+# 验证权限是否设置正确
+ls -l /usr/libexec/docker/cli-plugins/docker-compose
+
+# 验证修复结果，能正常输出版本号，说明问题解决
+docker compose version
+```
+
+
 
 ## Nginx 常用命令
 
